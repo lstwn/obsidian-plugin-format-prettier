@@ -1,0 +1,18 @@
+# Intellij
+*.iml
+.idea
+.env
+
+# npm
+node_modules
+package-lock.json
+
+# build
+main.js
+*.js.map
+
+# yarn
+yarn-error.log
+
+# macos
+.DS_Store

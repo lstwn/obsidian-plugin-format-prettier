@@ -1,0 +1,35 @@
+{
+  "name": "obsidian-plugin-format-prettier",
+  "description": "Opinionated formatting using prettier for your obsidian.md notes.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "obsidian.md",
+    "plugin",
+    "prettier"
+  ],
+  "author": "Leo Stewen <lstwn@mailbox.org>",
+  "repository": "lstwn/",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/eslint__js": "^8.42.3",
+    "builtin-modules": "^4.0.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "obsidian": "^1.7.2",
+    "obsidian-plugin-cli": "^0.9.0",
+    "tslib": "^2.8.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.10.0"
+  },
+  "dependencies": {
+    "prettier": "^3.3.3"
+  }
+}

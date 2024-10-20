@@ -1,0 +1,9 @@
+{
+	"id": "obsidian-plugin-format-prettier",
+	"name": "Prettier Format",
+	"author": "Leo Stewen",
+	"authorUrl": "https://github.com/lstwn",
+	"description": "Opinionated formatting using prettier for your notes.",
+	"minAppVersion": "1.5.0",
+	"isDesktopOnly": false
+}
