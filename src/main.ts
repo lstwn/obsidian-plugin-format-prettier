@@ -278,15 +278,20 @@ export default class PrettierPlugin extends Plugin {
     }
   }
 
-  // a hacky way to hook into the save command callback
+  // A hacky way to hook into the save command callback,
+  // as the Obsidian API does not expose this properly.
   hookIntoSaveCmd(): void {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const saveCommandDefinition = (this.app as any).commands?.commands?.[
-      "editor:save-file"
-    ];
+    type ExtendedApp = App & {
+      commands?: {
+        commands?: Record<string, { callback: () => void }>;
+      };
+    };
+
+    const saveCommandDefinition = (this.app as ExtendedApp).commands
+      ?.commands?.["editor:save-file"];
     const save = saveCommandDefinition?.callback;
 
-    if (typeof save === "function") {
+    if (saveCommandDefinition && typeof save === "function") {
       saveCommandDefinition.callback = () => {
         if (this.settings.formatOnSave) {
           const editor =
@@ -295,6 +300,8 @@ export default class PrettierPlugin extends Plugin {
         }
         save();
       };
+    } else {
+      console.error("Failed to hook into save command");
     }
   }
 }
